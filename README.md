@@ -153,5 +153,9 @@ text
 4. **Управление очередями**: Интерфейс RabbitMQ (`http://localhost:15672`) позволит в реальном времени наблюдать за потоком сообщений между сервисами.
 
 ### 👀 Пример результатов
-![[Pasted image 20260115145058.png]]
-![[Pasted image 20260115145147.png]]
+<img width="2545" height="1550" alt="image" src="https://github.com/user-attachments/assets/44408540-01f4-4e26-a28e-540d9c2e1411" />
+<img width="2034" height="1453" alt="image" src="https://github.com/user-attachments/assets/950f4052-3dd8-4313-8c37-394a19eaecaa" />
+<img width="2032" height="1477" alt="image" src="https://github.com/user-attachments/assets/3c98821a-105a-49af-a75a-1b5b4638d6d3" />
+
+
+
