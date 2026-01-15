@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  features:
+    build: .
+    command: python features/features.py
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+  model:
+    build: .
+    command: python model/model.py
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+  metric:
+    build: .
+    command: python metric/metric.py
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./logs:/app/logs
+
+  plot:
+    build: .
+    command: python plot/plot.py
+    depends_on:
+      - metric
+    volumes:
+      - ./logs:/app/logs
